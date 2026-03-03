@@ -2,7 +2,7 @@ extends TargetSystem
 
 @export_range(0, 100, 1) var target_hp_percentage : int
 
-func get_new_target() -> Unit:
+func find_target() -> Unit:
 	for node in get_tree().get_nodes_in_group("Units"):
 		var target_node := node as Unit
 		if target_node:

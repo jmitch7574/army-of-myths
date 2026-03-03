@@ -3,7 +3,8 @@ extends Node2D
 
 enum EFFECTS
 {
-	WEBBED
+	WEBBED,
+	ATHENA_PROTECT
 }
 
 @export var unit_resource : UnitResource
@@ -71,6 +72,9 @@ func _ready() -> void:
 	grid_coords = Vector2(0, 0)
 
 func take_damage(damage : float, source : Unit) -> void:
+	if effects.has(EFFECTS.ATHENA_PROTECT):
+		damage *= 0.5
+	
 	health -= damage
 	GameEvents.unit_health_changed.emit(self, source, -damage, health)
 	

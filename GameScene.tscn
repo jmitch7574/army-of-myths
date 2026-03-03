@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://chw6n1tignf2u" path="res://Scenes/UI Elements/shop.tscn" id="12_0qy1f"]
 [ext_resource type="Resource" uid="uid://n12bf2mmjkal" path="res://Units/Odin.tres" id="12_tm1sv"]
 [ext_resource type="Script" uid="uid://j4vrpkdjrry3" path="res://Scripts/Game Info UI/UnitText.gd" id="13_0p1ba"]
+[ext_resource type="Resource" uid="uid://mbixxjjcj8ie" path="res://Units/Athena.tres" id="13_gd15m"]
 [ext_resource type="Script" uid="uid://h7au6xuybg48" path="res://Scripts/Gameloop/Camera.gd" id="14_k8u5j"]
 [ext_resource type="Script" uid="uid://0gdnvd6dbelh" path="res://Scripts/Game Info UI/MoneyContainer.gd" id="16_b3pp0"]
 [ext_resource type="Script" uid="uid://bikk0tdbsecgb" path="res://Scripts/Game Info UI/RoundLabel.gd" id="19_0qy1f"]
@@ -321,7 +322,7 @@ stream = ExtResource("2_igvw6")
 
 [node name="ShopQueue" type="Node" parent="." unique_id=1354138094]
 script = ExtResource("2_ex6dp")
-units = Array[ExtResource("3_ex6dp")]([ExtResource("4_cg2kh"), ExtResource("5_0ptlf"), ExtResource("7_fsk3a"), ExtResource("8_y0td7"), ExtResource("9_cvqoq"), ExtResource("10_kba41"), ExtResource("11_lul5g"), ExtResource("12_tm1sv")])
+units = Array[ExtResource("3_ex6dp")]([ExtResource("4_cg2kh"), ExtResource("5_0ptlf"), ExtResource("7_fsk3a"), ExtResource("8_y0td7"), ExtResource("9_cvqoq"), ExtResource("10_kba41"), ExtResource("11_lul5g"), ExtResource("12_tm1sv"), ExtResource("13_gd15m")])
 
 [node name="GameStateManager" type="Node" parent="." unique_id=594612751 groups=["GameManager"]]
 script = ExtResource("5_rb7ul")

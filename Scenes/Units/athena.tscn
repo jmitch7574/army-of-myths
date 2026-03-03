@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://bpvdh4hjjc5br"]
+
+[ext_resource type="Script" uid="uid://cosr4qrn1kb71" path="res://Scripts/Units/Unit.gd" id="1_x3pqe"]
+[ext_resource type="Material" uid="uid://dlhhnx45g42ri" path="res://Materials/unit.tres" id="2_lbenu"]
+[ext_resource type="Texture2D" uid="uid://rigbvsbo8la3" path="res://Assets/Units/athena.png" id="3_sbwct"]
+[ext_resource type="Script" uid="uid://w8c1iwl35m6i" path="res://Scripts/States/Types/StateMachine.gd" id="5_3x71x"]
+[ext_resource type="Script" uid="uid://d0byqe8nfg7jb" path="res://Scripts/States/WalkState.gd" id="6_vbrwy"]
+[ext_resource type="Script" uid="uid://dpqdy6u00wq7" path="res://Scripts/States/StateEntryConditions/Always.gd" id="7_hg0ti"]
+[ext_resource type="Script" uid="uid://bjxb0ag1ry4ws" path="res://Scripts/States/MeleeAttackState.gd" id="8_a7cbt"]
+[ext_resource type="Script" uid="uid://c0gyjbipb4kwj" path="res://Scripts/States/StateEntryConditions/DistanceToTarget.gd" id="9_1xn7r"]
+[ext_resource type="Script" uid="uid://d2ecajgwhdxhn" path="res://Scripts/States/AthenaCharge.gd" id="9_x3pqe"]
+[ext_resource type="Script" uid="uid://cp7db660vp1ad" path="res://Scripts/States/StateEntryConditions/Timer.gd" id="10_x3pqe"]
+[ext_resource type="Script" uid="uid://bdu8lj42wuild" path="res://Scripts/Targeting/ClosestTarget.gd" id="12_dgfer"]
+[ext_resource type="Script" uid="uid://cp3y8dx6xgfpq" path="res://Scripts/Targeting/LowestHealthAllyTargeting.gd" id="13_x3pqe"]
+[ext_resource type="PackedScene" uid="uid://b42iaqce3h8w8" path="res://Scenes/unit_audio.tscn" id="14_u4xbr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3f7ei"]
+size = Vector2(64, 90)
+
+[node name="Athena" type="Node2D" unique_id=1703226469 groups=["Units"]]
+script = ExtResource("1_x3pqe")
+max_health = 120.0
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1543214580]
+texture_filter = 1
+material = ExtResource("2_lbenu")
+scale = Vector2(5, 5)
+texture = ExtResource("3_sbwct")
+region_rect = Rect2(0, 0, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="StateMachine" type="Node" parent="." unique_id=943529181 node_paths=PackedStringArray("states")]
+script = ExtResource("5_3x71x")
+states = [NodePath("Charge"), NodePath("AttackState"), NodePath("WalkState")]
+
+[node name="WalkState" type="Node" parent="StateMachine" unique_id=624709180 node_paths=PackedStringArray("target_system", "parent", "sprite")]
+script = ExtResource("6_vbrwy")
+target_system = NodePath("../../TargetingSystem")
+parent = NodePath("../..")
+move_speed = 100.0
+sprite = NodePath("../../Sprite")
+interruptible = true
+
+[node name="StateConditionAlways" type="Node" parent="StateMachine/WalkState" unique_id=252489299]
+script = ExtResource("7_hg0ti")
+metadata/_custom_type_script = "uid://dpqdy6u00wq7"
+
+[node name="AttackState" type="Node" parent="StateMachine" unique_id=747475448 node_paths=PackedStringArray("target_system", "parent", "sprite")]
+script = ExtResource("8_a7cbt")
+target_system = NodePath("../../TargetingSystem")
+parent = NodePath("../..")
+sprite = NodePath("../../Sprite")
+attack_speed = 0.5
+damage = 5
+interruptible = true
+
+[node name="StateConditionAttackRange" type="Node" parent="StateMachine/AttackState" unique_id=968761938 node_paths=PackedStringArray("target_system", "unit")]
+script = ExtResource("9_1xn7r")
+target_system = NodePath("../../../TargetingSystem")
+attack_range = 96.0
+unit = NodePath("../../..")
+metadata/_custom_type_script = "uid://c0gyjbipb4kwj"
+
+[node name="Charge" type="Node" parent="StateMachine" unique_id=2008884350 node_paths=PackedStringArray("target_system", "sprite_renderer")]
+script = ExtResource("9_x3pqe")
+target_system = NodePath("../../AllyTargeting")
+move_speed = 1000.0
+sprite_renderer = NodePath("../../Sprite")
+
+[node name="StateConditionTimer" type="Node" parent="StateMachine/Charge" unique_id=1586649273]
+script = ExtResource("10_x3pqe")
+time = 8.0
+run_on_start = true
+metadata/_custom_type_script = "uid://cp7db660vp1ad"
+
+[node name="TargetingSystem" type="Node2D" parent="." unique_id=701804326 node_paths=PackedStringArray("parent")]
+script = ExtResource("12_dgfer")
+parent = NodePath("..")
+
+[node name="AllyTargeting" type="Node2D" parent="." unique_id=1252976785 node_paths=PackedStringArray("parent")]
+script = ExtResource("13_x3pqe")
+parent = NodePath("..")
+
+[node name="UnitAudio" parent="." unique_id=1661030395 instance=ExtResource("14_u4xbr")]
+
+[node name="Collision" type="Area2D" parent="." unique_id=1344125948 groups=["UnitHitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" unique_id=616171161]
+shape = SubResource("RectangleShape2D_3f7ei")

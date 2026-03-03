@@ -2,7 +2,6 @@ class_name Charge
 extends State
 
 @export var target_system : TargetSystem
-@export var parent : Node2D
 @export var move_speed : float
 @export var sprite_renderer : Sprite2D
 
@@ -22,7 +21,7 @@ func _state_update(delta: float) -> void:
 	if target_system.get_target():
 		var speed = delta * move_speed
 		
-		parent.global_position = parent.global_position.move_toward(target_system.get_target().global_position, speed)
+		unit.global_position = unit.global_position.move_toward(target_system.get_target().global_position, speed)
 
 func _enter_state() -> void:
 	instantiated_particle_system.emitting = true

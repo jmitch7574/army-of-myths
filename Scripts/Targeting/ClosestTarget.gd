@@ -2,7 +2,7 @@ class_name ClosestTarget
 extends TargetSystem
 
 ## Get Closest Target
-func get_new_target() -> Unit:
+func find_target() -> Unit:
 	var closest_unit: Unit = null
 	var closest_distance: float = INF
 	

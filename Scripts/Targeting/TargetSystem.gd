@@ -13,9 +13,12 @@ func _process(delta: float) -> void:
 
 func get_target() -> Unit:
 	if current_target == null or current_target.health <= 0:
-		current_target = get_new_target()
+		get_new_target()
 		
 	return current_target
 
-func get_new_target() -> Unit:
+func find_target() -> Unit:
 	return null
+
+func get_new_target():
+	current_target = find_target()

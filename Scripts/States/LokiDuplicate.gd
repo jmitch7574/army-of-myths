@@ -15,6 +15,7 @@ func _enter_state() -> void:
 	get_tree().current_scene.add_child(new_node)
 	new_node.is_loki_clone = true
 	new_node.health = 1
+	new_node.max_health = 1
 	
 	await get_tree().process_frame
 	

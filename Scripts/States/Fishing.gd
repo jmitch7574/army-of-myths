@@ -34,6 +34,9 @@ func _exit_state() -> void:
 func _state_update(delta: float) -> void:
 	if GameStateManager.current_state != GameStateManager.GAMESTATE.BATTLE:
 		return
+		
+	health_karp_targeting.get_new_target()
+	evil_karp_targeting.get_new_target()
 	
 	fishing_value -= delta
 	

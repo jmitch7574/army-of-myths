@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UnitResource" format=3 uid="uid://mbixxjjcj8ie"]
+
+[ext_resource type="Script" uid="uid://drwphox75l0em" path="res://Scripts/Units/UnitResource.gd" id="1_y0e4v"]
+[ext_resource type="PackedScene" uid="uid://bpvdh4hjjc5br" path="res://Scenes/Units/athena.tscn" id="2_y0e4v"]
+[ext_resource type="Texture2D" uid="uid://rigbvsbo8la3" path="res://Assets/Units/athena.png" id="3_vha8k"]
+
+[resource]
+script = ExtResource("1_y0e4v")
+unit_name = "Athena"
+unit_cost = 3
+unit_sprite = ExtResource("3_vha8k")
+unit_scene = ExtResource("2_y0e4v")
+metadata/_custom_type_script = "uid://drwphox75l0em"
