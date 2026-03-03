@@ -39,32 +39,30 @@ metadata/_edit_lock_ = true
 script = ExtResource("5_ut5m2")
 states = [NodePath("AttackState"), NodePath("WalkState")]
 
-[node name="WalkState" type="Node" parent="StateMachine" unique_id=624709180 node_paths=PackedStringArray("target_system", "parent", "sprite", "entry_condition")]
+[node name="WalkState" type="Node" parent="StateMachine" unique_id=624709180 node_paths=PackedStringArray("target_system", "parent", "sprite")]
 script = ExtResource("7_x2fkh")
 target_system = NodePath("../../TargetingSystem")
 parent = NodePath("../..")
 move_speed = 250.0
 sprite = NodePath("../../Sprite")
 interruptible = true
-entry_condition = NodePath("StateConditionAlways")
 
 [node name="StateConditionAlways" type="Node" parent="StateMachine/WalkState" unique_id=1544115011]
 script = ExtResource("7_nb5wa")
 metadata/_custom_type_script = "uid://dpqdy6u00wq7"
 
-[node name="AttackState" type="Node" parent="StateMachine" unique_id=747475448 node_paths=PackedStringArray("target_system", "parent", "sprite", "entry_condition")]
+[node name="AttackState" type="Node" parent="StateMachine" unique_id=747475448 node_paths=PackedStringArray("target_system", "parent", "sprite")]
 script = ExtResource("8_xapli")
 target_system = NodePath("../../TargetingSystem")
 parent = NodePath("../..")
 sprite = NodePath("../../Sprite")
 attack_speed = 1.2
 damage = 3
-entry_condition = NodePath("StateConditionAttackRange")
 
 [node name="StateConditionAttackRange" type="Node" parent="StateMachine/AttackState" unique_id=188974932 node_paths=PackedStringArray("target_system", "unit")]
 script = ExtResource("9_lojwx")
 target_system = NodePath("../../../TargetingSystem")
-attack_range = 16.0
+attack_range = 48.0
 unit = NodePath("../../..")
 metadata/_custom_type_script = "uid://c0gyjbipb4kwj"
 

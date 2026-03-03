@@ -33,40 +33,37 @@ metadata/_edit_lock_ = true
 script = ExtResource("4_q1uhi")
 states = [NodePath("SpecialAttackState"), NodePath("AttackState"), NodePath("WalkState")]
 
-[node name="WalkState" type="Node" parent="StateMachine" unique_id=624709180 node_paths=PackedStringArray("target_system", "parent", "sprite", "entry_condition")]
+[node name="WalkState" type="Node" parent="StateMachine" unique_id=624709180 node_paths=PackedStringArray("target_system", "parent", "sprite")]
 script = ExtResource("5_74l43")
 target_system = NodePath("../../TargetingSystem")
 parent = NodePath("../..")
 move_speed = 100.0
 sprite = NodePath("../../Sprite")
 interruptible = true
-entry_condition = NodePath("StateConditionAlways")
 
 [node name="StateConditionAlways" type="Node" parent="StateMachine/WalkState" unique_id=252489299]
 script = ExtResource("6_0qr1y")
 metadata/_custom_type_script = "uid://dpqdy6u00wq7"
 
-[node name="AttackState" type="Node" parent="StateMachine" unique_id=747475448 node_paths=PackedStringArray("target_system", "parent", "sprite", "entry_condition")]
+[node name="AttackState" type="Node" parent="StateMachine" unique_id=747475448 node_paths=PackedStringArray("target_system", "parent", "sprite")]
 script = ExtResource("6_0f6ju")
 target_system = NodePath("../../TargetingSystem")
 parent = NodePath("../..")
 sprite = NodePath("../../Sprite")
 attack_speed = 0.65
 damage = 6
-entry_condition = NodePath("StateConditionAttackRange")
 
 [node name="StateConditionAttackRange" type="Node" parent="StateMachine/AttackState" unique_id=968761938 node_paths=PackedStringArray("target_system", "unit")]
 script = ExtResource("7_y3l4i")
 target_system = NodePath("../../../TargetingSystem")
-attack_range = 32.0
+attack_range = 96.0
 unit = NodePath("../../..")
 metadata/_custom_type_script = "uid://c0gyjbipb4kwj"
 
-[node name="SpecialAttackState" type="Node" parent="StateMachine" unique_id=2008884350 node_paths=PackedStringArray("target_system", "entry_condition")]
+[node name="SpecialAttackState" type="Node" parent="StateMachine" unique_id=2008884350 node_paths=PackedStringArray("target_system")]
 script = ExtResource("7_sp4f5")
 target_system = NodePath("../../TargetingSystem")
 spawn_scene = ExtResource("8_3mpmt")
-entry_condition = NodePath("StateConditionDealingDamage")
 
 [node name="StateConditionDealingDamage" type="Node" parent="StateMachine/SpecialAttackState" unique_id=1837577524 node_paths=PackedStringArray("attack_state")]
 script = ExtResource("10_pxxna")

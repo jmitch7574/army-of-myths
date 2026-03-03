@@ -20,7 +20,7 @@ size = Vector2(64, 90)
 
 [node name="Odin" type="Node2D" unique_id=1703226469 groups=["Units"]]
 script = ExtResource("1_4w34a")
-max_health = 120.0
+max_health = 96.0
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1543214580]
 texture_filter = 1
@@ -67,14 +67,13 @@ interruptible = true
 [node name="StateConditionAttackRange" type="Node" parent="StateMachine/AttackState" unique_id=968761938 node_paths=PackedStringArray("target_system", "unit")]
 script = ExtResource("8_fv6r5")
 target_system = NodePath("../../../TargetingSystem")
-attack_range = 96.0
+attack_range = 128.0
 unit = NodePath("../../..")
 metadata/_custom_type_script = "uid://c0gyjbipb4kwj"
 
-[node name="Charge" type="Node" parent="StateMachine" unique_id=2008884350 node_paths=PackedStringArray("target_system", "parent", "sprite_renderer")]
+[node name="Charge" type="Node" parent="StateMachine" unique_id=2008884350 node_paths=PackedStringArray("target_system", "sprite_renderer")]
 script = ExtResource("10_4w34a")
 target_system = NodePath("../../LowHealthTargeting")
-parent = NodePath("../..")
 move_speed = 1000.0
 sprite_renderer = NodePath("../../Sprite")
 interruptible = true
@@ -94,7 +93,7 @@ interruptible = true
 [node name="StateConditionAttackRange" type="Node" parent="StateMachine/Execute" unique_id=964899920 node_paths=PackedStringArray("target_system", "unit")]
 script = ExtResource("8_fv6r5")
 target_system = NodePath("../../../LowHealthTargeting")
-attack_range = 1.0
+attack_range = 96.0
 unit = NodePath("../../..")
 metadata/_custom_type_script = "uid://c0gyjbipb4kwj"
 

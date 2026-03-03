@@ -98,7 +98,7 @@ damage = 8
 [node name="StateConditionAttackRange" type="Node" parent="StateMachine/AttackState" unique_id=889312606 node_paths=PackedStringArray("target_system", "unit")]
 script = ExtResource("11_14slv")
 target_system = NodePath("../../../TargetingSystem")
-attack_range = 32.0
+attack_range = 96.0
 unit = NodePath("../../..")
 metadata/_custom_type_script = "uid://c0gyjbipb4kwj"
 
